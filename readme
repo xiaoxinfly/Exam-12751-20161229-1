@@ -1,0 +1,2 @@
+使用MVN命令运行如下：
+mvn exec:java -Dexec.mainClass="com.exam.main.App"
