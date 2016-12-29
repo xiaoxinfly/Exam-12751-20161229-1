@@ -11,8 +11,6 @@
 
 	<context:component-scan base-package="com.exam.service" />
 	
-	<bean id="userInfoEventListener" class="com.exam.event.listener.UserInfoAddEventListener" />
-
 	<context:property-placeholder location="classpath:jdbc.properties" />
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
@@ -29,7 +27,6 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:mybatis-config.xml" />
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -38,14 +35,17 @@
 	</bean>
 
 	<!-- aop -->
-	<bean id="timeHandler" class="com.exam.aop.TimeHandler" />
+	<bean id="filmEventHandler" class="com.exam.aop.FilmEventHandler" />
+	
+	<!-- spring事件监听 -->
+	<bean id="eventListener" class="com.exam.event.listener.EventListener" />
 
-	<!-- 加上 proxy-target-class="true" 可运行 不会有得不到bean的错误 可是，这是为什么呢 -->
+	<!-- 加上 proxy-target-class="true" 基于类 -->
 	<aop:config proxy-target-class="true">
-		<aop:aspect id="time" ref="timeHandler">
+		<aop:aspect id="filmEvent" ref="filmEventHandler">
 			<aop:pointcut id="addAllMethod" expression="execution(* com.exam.service.*.*(..))" />
-			<aop:before method="printTime" pointcut-ref="addAllMethod" />
-			<!-- <aop:after method="printTime" pointcut-ref="addAllMethod" /> -->
+			<aop:before method="beforeInsert" pointcut-ref="addAllMethod" />
+			<aop:after method="afterInsert" pointcut-ref="addAllMethod" />
 		</aop:aspect>
 	</aop:config>
 

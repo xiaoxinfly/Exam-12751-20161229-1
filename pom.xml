@@ -12,8 +12,6 @@
 		<spring.version>4.3.4.RELEASE</spring.version>
 		<!-- MyBatis版本 -->
 		<mybatis.version>3.4.1</mybatis.version>
-		<!-- junit版本 -->
-		<junit.version>4.11</junit.version>
 		<!-- 日志包 -->
 		<slf4j.version>1.7.21</slf4j.version>
 		<!-- mysql版本 -->
@@ -21,16 +19,6 @@
 	</properties>
 
 	<dependencies>
-
-		<!-- junit 包 hamcrest-core自动加进来 -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<!-- 版本写的格式${} -->
-			<version>${junit.version}</version>
-			<!-- scope是指定当前包的依赖范围 有compile(默认范围)\provided(已提供范围)\runtime(运行时范围)\system(系统范围) -->
-			<scope>test</scope>
-		</dependency>
 
 		<!-- SPRING START -->
 		<dependency>
@@ -44,9 +32,6 @@
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
-		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-tx</artifactId> 
-			<version>${spring.version}</version> </dependency> -->
 
 		<dependency>
 			<groupId>org.springframework</groupId>

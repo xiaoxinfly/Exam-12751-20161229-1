@@ -1,2 +1,4 @@
+数据配置文件在项目目录src/main/resource中的jdbc.properties中
+
 使用MVN命令运行如下：
-mvn exec:java -Dexec.mainClass="com.exam.main.App"
+mvn exec:java -Dexec.mainClass="com.exam.main.Main"
