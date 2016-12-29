@@ -3,4 +3,4 @@
 密码：jdbc.password
 
 使用MVN命令运行如下：
-mvn exec:java -Dexec.mainClass="com.exam.main.Main"
+mvn clean&&mvn compile&mvn exec:java -Dexec.mainClass="com.exam.main.Main"
